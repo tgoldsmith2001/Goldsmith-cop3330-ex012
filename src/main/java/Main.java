@@ -17,6 +17,7 @@ public class Main {
         double I= (Double.parseDouble(Str2));
         double T= Double.parseDouble(Str3);
         double total=P*(1+(T*I/100));
+        //Multiply by 100 round then divide by 100 to round to two decimal places
         double rounded_Total=Math.round(total*100.0)/100.0;
         System.out.format("After %.0f years at %.2f%%, the investment will be worth $%.2f.",T,I,rounded_Total);
     }
