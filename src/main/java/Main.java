@@ -16,30 +16,8 @@ public class Main {
         double P= Double.parseDouble(Str1);
         double I= (Double.parseDouble(Str2));
         double T= Double.parseDouble(Str3);
-        double Total=Round_up(P*(1+(T*I/100)));
-        System.out.format("After %.0f years at %.2f%%, the investment will be worth $%.2f.",T,I,Total);
-    }
-    //A function that uses a base 10 system to round a number up to 2 decimal places (up to next penny)
-    public static double Round_up(double num){
-        //Convert number to string
-        String n=String.valueOf(num);
-        double Ret=0;
-        int decimal=n.indexOf('.');
-        //Remove decimal from string for the purpose of calculations
-        String N=n.replace(".","");
-        for (int i = 0; i <= decimal+1; i++) {
-            //Checks for case where there aren't two decimal places
-            if(i==N.length()){
-                break;
-            }
-            //Gets value at specific decimal index
-            int decimal_value=Character.getNumericValue((N.charAt(i)));
-            //Case where i is at location to be rounded up
-            if(i==decimal+1)
-                decimal_value+=1;
-            //Adds decimal at index i to return by a factor of 10^(i-1)
-            Ret+=(Math.pow(10,decimal-i-1))*decimal_value;
-        }
-        return Ret;
+        double total=P*(1+(T*I/100));
+        double rounded_Total=Math.round(total*100.0)/100.0;
+        System.out.format("After %.0f years at %.2f%%, the investment will be worth $%.2f.",T,I,rounded_Total);
     }
 }
